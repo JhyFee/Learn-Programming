@@ -60,7 +60,31 @@ Next, enter the minutes of arc: 51\
 Finally, enter the seconds of arc: 19\
 37 degrees, 51 minutes, 19 seconds = 37.8553 degrees
 
-
+```c++
+// convert_lt.cpp   -- convert latitude
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int degs, mins, secs;
+    float cdegs;
+    const float Con_to_degs = 60;
+    
+    cout << "Enter a latitude in degrees, minutes, and seconds:\n";
+    cout << "First, enter the degrees: ";
+    cin >> degs;
+    cout << "Next, enter the minutes of arc: ";
+    cin >> mins;
+    cout << "Finally, enter the seconds of arc: ";
+    cin >> secs;
+    
+    cdegs = ((secs / Con_to_degs) + mins) / Con_to_degs + degs;
+    
+    cout << degs << " degrees, " << mins << " minutes, "
+         << secs << " seconds = " << cdegs << endl;
+    return 0;
+}
+```
 4. Write a program that asks the user to enter the number of seconds as an integer value (use type long,or,if available, long  long) and that then displays the equiva- lent time in days,hours,minutes,and seconds.Use symbolic constants to represent the number of hours in the day,the number of minutes in an hour,and the number of seconds in a minute.The output should look like this:
 > Enter the number of seconds: 31600000\
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
