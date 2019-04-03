@@ -1,2 +1,2 @@
 # Learn-Programming
-C++编程学习记录
+《C++ Peimer Plus》 learning notes & programing exercises
