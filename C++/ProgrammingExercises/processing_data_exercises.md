@@ -78,7 +78,7 @@ int main()
     cout << "Finally, enter the seconds of arc: ";
     cin >> secs;
     
-    cdegs = ((secs / Con_to_degs) + mins) / Con_to_degs + degs;
+    cdegs = (secs / Con_to_degs + mins) / Con_to_degs + degs;
     
     cout << degs << " degrees, " << mins << " minutes, "
          << secs << " seconds = " << cdegs << endl;
@@ -89,7 +89,31 @@ int main()
 > Enter the number of seconds: 31600000\
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
 
-
+```c++
+// convert_time.cpp -- displays the equivalent time in days,hours,minutes,and seconds.
+#include <iostream>
+int main()
+{
+    using namespace std;
+    long long Sec;
+    int secs, mins, hours, days;
+    const int Con_to_time = 60;
+    const int Con_to_days = 24;
+    
+    cout << "Enter the number of seconds: ";
+    cin >> Sec;
+    
+    secs = Sec % Con_to_time;
+    mins = Sec / Con_to_time % Con_to_time;
+    hours = Sec / Con_to_time / Con_to_time % Con_to_days;
+    days = Sec / Con_to_time / Con_to_time / Con_to_days;
+    
+    cout << Sec << " seconds = " << days << " days, "
+         << hours << " hours, " << mins << " minutes, "
+         << secs << " seconds." << endl;
+    return 0;
+}
+```
 5. Write a program that requests the user to enter the current world population and the current population of the U.S.(or of some other nation of your choice).Store the information in variables of type long  long.Have the program display the per- cent that the U.S.(or other nation’s) population is of the world’s population.The output should look something like this:
 > Enter the world's population: 6898758899 \
 Enter the population of the US: 310783781\

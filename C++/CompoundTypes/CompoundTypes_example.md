@@ -268,7 +268,268 @@ You can append strings.\
 s1 += s2 yields s1 = penguinbuzzard\
 s2 += " for a day" yields s2 = buzzard for a day
 
-9. strtype.cpp
+9. strtype3.cpp
 
+```c++
+// strtype3.cpp -- more string class features
+#include <iostream>
+#include <string>               // make string class available
+#include <cstring>              // C-style string library
+int main()
+{
+    using namespace std;
+    char charr1[20];
+    char charr2[20] = "jaguar";
+    string str1;
+    string str2 = "panther";
+    
+    // assignment for string objects and character arrays
+    str1 = str2;                // copy str2 to str1
+    strcpy(charr1, charr2);     // copy charr2 to charr1
+    
+    // appending for string objects and character arrays
+    str1 += " paste";           // add paste to end of str1
+    strcat(charr1, " juice");   // add juice to end of charr1
+    
+    // finding the length of string object and a C-style string
+    int len1 = str1.size();     // obtain length of str1
+    int len2 = strlen(charr1);  // obtain length of charr1
+    
+    cout << "The string " << str1 << " contains "
+         << len1 << " characters.\n";
+    cout << "The string " << charr1 << " contains "
+         << len2 << " characters.\n";
 
+    return 0;
+}
+```
+> 输出：\
+The string panther paste contains 13 characters.\
+The string jaguar juice contains 12 characters.
+
+10. strtype4.cpp
+
+```c++
+// strsype4.cpp -- line input
+#include <iostream>
+#include <string>               // make string class available
+#include <cstring>              // C-style string library
+int main()
+{
+    using namespace std;
+    char charr[20];
+    string str;
+    
+    cout << "Length of string in charr before input: "
+         << strlen(charr) << endl;
+    cout << "Length of string in str before input: "
+         << str.size() << endl;
+    cout << "Enter a line of text:\n";
+    cin.getline(charr, 20);     // indicate maximum length
+    cout << "You entered: " << charr << endl;
+    cout << "Enter another line of text:\n";
+    getline(cin, str);          // cin now an argument; no length specifier
+    cout << "You entered: " << str << endl;
+    cout << "Length of string in charr after input: "
+         << strlen(charr) << endl;
+    cout << "Length of string in str after input: "
+         << str.size() << endl;
+    
+    return 0;
+}
+```
+> 输出：\
+Length of string in charr before input: 0\
+Length of string in str before input: 0\
+Enter a line of text:\
+txt log dbf\
+You entered: txt log dbf\
+Enter another line of text:\
+iso zip gz\
+You entered: iso zip gz\
+Length of string in charr after input: 11\
+Length of string in str after input: 10
+
+11. structur.cpp
+
+```c++
+// structur.cpp -- a simple structure
+#include <iostream>
+struct inflatable       // structure declaration
+{
+    char name[20];
+    float volume;
+    double price;
+};
+
+int main()
+{
+    using namespace std;
+    inflatable guest = 
+    {
+        "Glorious Gloria",  // name value
+        1.88,               // volume value
+        29.99               // price value
+    };  // guest is a structure variable of type inflatable
+    // It's initialized to the indicated values
+    inflatable pal =
+    {
+        "Audacious Arthur",
+        3.12,
+        32.99
+    };  // pal is a second variable of type inflatable
+    // NOTE: some implementations require using
+    // static inflatable guest =
+    
+    cout << "Expand your guest list with " << guest.name;
+    cout << " and " << pal.name << "!\n";
+    // pal.name is the name member of the pal variable
+    cout << "You can have both for $";
+    cout << guest.price + pal.price << "!\n";
+    return 0;
+}
+```
+> 输出：\
+Expand your guest list with Glorious Gloria and Audacious Arthur!\
+You can have both for $62.98!
+
+12. assgn_st.cpp
+
+```c++
+// assgn_st.cpp -- assigning structures
+#include <iostream>
+struct inflatable
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable bouquet =
+    {
+        "sunflowers",
+        0.20,
+        12.49
+    };
+    inflatable choice;
+    cout << "bouquet: " << bouquet.name << " for $";
+    cout << bouquet.price << endl;
+    
+    choice = bouquet;       // assign structure to another
+    cout << "choice: " << choice.name << " for $";
+    cout << choice.price << endl;
+    return 0;
+}
+```
+> 输出：\
+bouquet: sunflowers for $12.49\
+choice: sunflowers for $12.49
+
+13. arrstruc.cpp
+
+```c++
+// arrstruc.cpp -- an array of structures
+#include <iostream>
+struct inflatable
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable guests[2] =              // initializing an array of structs
+    {
+        {"Bambi", 0.5, 21.99},          // first structure in array
+        {"Godzilla", 2000, 565.99}      // next structure in array
+    };
+    
+    cout << "The guests " << guests[0].name << " end " << guests[1].name
+         << "\nhave a combined volume of "
+         << guests[0].volume + guests[1].volume << " cubic feet.\n";
+    return 0;
+}
+```
+> 输出：\
+The guests Bambi end Godzilla\
+have a combined volume of 2000.5 cubic feet.
+
+14. address.cpp
+
+```c++
+// address.cpp  -- using the & operator to find address
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int donuts = 6;
+    double cups= 4.5;
+    
+    cout << "donuts value = " << donuts;
+    cout << " and donuts address = " << &donuts << endl;
+    // NOTE: you may need to use unsigned (&donuts)
+    // and unsigned (&cups)
+    cout << "cups value = " << cups;
+    cout << " and cups address = " << &cups << endl;
+    return 0;
+}
+```
+> 输出：\
+donuts value = 6 and donuts address = 0x7ffc7e12c35c\
+cups value = 4.5 and cups address = 0x7ffc7e12c350
+
+15. pointer.cpp
+
+```c++
+// pointer.cpp  -- our first pointer variable
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int updates = 6;            // declare a variable
+    int * p_updates;            // declare pointer to an int
+    p_updates = &updates;       // assign address of int to pointer
+    
+// express values two ways
+    cout << "Values: updates = " << updates;
+    cout << ", *p_updates = "<< *p_updates << endl;
+
+// express address two ways
+    cout << "Addresses: &updates = " << &updates;
+    cout << ", p_updates = " << p_updates << endl;
+// use pointer to change value
+    *p_updates = *p_updates + 1;
+    cout << "Now updates = " << updates << endl;
+    return 0;
+}
+```
+> 输出：\
+Values: updates = 6, *p_updates = 6\
+Addresses: &updates = 0x7fff4716bbd4, p_updates = 0x7fff4716bbd4\
+Now updates = 7
+
+16. init_ptr.cpp
+
+```c++
+// init_ptr.cpp -- initialize a pointer
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int higgens = 5;
+    int * pt = &higgens;
+    
+    cout << "Value of higgens = " << higgens
+         << "; Address of higgens = " << &higgens << endl;
+    cout << "Value of *pt = " << *pt
+         << "; Address of pt = " << pt << endl;
+    return 0;
+}
+```
+> 输出：\
+Value of higgens = 5; Address of higgens = 0x7fff6d041234\
+Value of *pt = 5; Address of pt = 0x7fff6d041234
 
