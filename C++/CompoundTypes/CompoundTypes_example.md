@@ -30,7 +30,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Total yams = 21\
 The package with 8 yams costs 30 cents per yam.\
 The total yam expense is 380 cents.\
@@ -66,7 +66,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Howdy! I'm C\++owboy! What's your name?\
 JhyFee\
 Well, JhyFee, your name has 6 letter and is stored\
@@ -95,7 +95,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Enter your name:\
 Jhy Fee\
 Enter your favorite dessert:\
@@ -122,7 +122,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Enter your name:\
 Jhy Fee\
 Enter your favorite dessert:\
@@ -150,7 +150,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Enter your name:\
 Jhy Fee\
 Enter your favorite dessert:\
@@ -178,7 +178,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 What year was your house built?\
 1888\
 What is its street address?\
@@ -217,7 +217,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Enter a kind of feline: ocelot\
 Enter another kind of feline: tiger\
 Here are some felines:\
@@ -256,7 +256,7 @@ int main()
     return 0;
 } 
 ```
-> 输出：\
+> Output：\
 You can  assign on string object to another: s2 = s1\
 s1: penguin , s2: penguin\
 You can assign a C-type string to a string object.\
@@ -303,7 +303,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 The string panther paste contains 13 characters.\
 The string jaguar juice contains 12 characters.
 
@@ -338,7 +338,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Length of string in charr before input: 0\
 Length of string in str before input: 0\
 Enter a line of text:\
@@ -389,7 +389,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Expand your guest list with Glorious Gloria and Audacious Arthur!\
 You can have both for $62.98!
 
@@ -423,7 +423,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 bouquet: sunflowers for $12.49\
 choice: sunflowers for $12.49
 
@@ -453,7 +453,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 The guests Bambi end Godzilla\
 have a combined volume of 2000.5 cubic feet.
 
@@ -477,7 +477,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 donuts value = 6 and donuts address = 0x7ffc7e12c35c\
 cups value = 4.5 and cups address = 0x7ffc7e12c350
 
@@ -506,7 +506,7 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Values: updates = 6, *p_updates = 6\
 Addresses: &updates = 0x7fff4716bbd4, p_updates = 0x7fff4716bbd4\
 Now updates = 7
@@ -529,7 +529,278 @@ int main()
     return 0;
 }
 ```
-> 输出：\
+> Output：\
 Value of higgens = 5; Address of higgens = 0x7fff6d041234\
 Value of *pt = 5; Address of pt = 0x7fff6d041234
 
+17. use_new.cpp
+
+```c++
+// use_new.cpp  -- using the new operator
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int nights = 1001;
+    int * pt = new int;             // allocate space for an int
+    *pt = 1001;                     // store a value there
+    
+    cout << "nights value = ";
+    cout << nights << ": location " << &nights << endl;
+    cout << "int ";
+    cout << "value = " << *pt << ": location = " << pt << endl;
+    double * pd = new double;       // allocate space for a double
+    *pd = 10000001.0;               // store a double there
+    
+    cout << "double ";
+    cout << "value = " << *pd << ": location = " << pd << endl;
+    cout << "location of pointer pd: " << &pd << endl;
+    cout << "size of pt = " << sizeof(pt);
+    cout << ": size of *pt = " << sizeof(*pt) << endl;
+    cout << "size of pd = " << sizeof pd;
+    cout << ": size of *pd = " << sizeof(*pd) << endl;
+    return 0;
+}
+```
+> Output: \
+nights value = 1001: location 0x7ffd5daca744\
+int value = 1001: location = 0x1ac2010\
+double value = 1e+07: location = 0x1ac2030\
+location of pointer pd: 0x7ffd5daca738\
+size of pt = 8: size of *pt = 4\
+size of pd = 8: size of *pd = 8
+
+18. arraynew.cpp
+
+```c++
+// arraynew.cpp -- using the new operator for arrays
+#include <iostream>
+int main()
+{
+    using namespace std;
+    double * p3 = new double [3];   // space for 3 doubles
+    p3[0] = 0.2;                    // treat p3 like an array name
+    p3[1] = 0.5;
+    p3[2] = 0.8;
+    cout << "p3[1] is " << p3[1] << " .\n";
+    p3 = p3 + 1;                    // increment the pointer
+    cout << "Now p3[0] is " << p3[0] << " and ";
+    cout << "p3[1] is " << p3[1] << ".\n";
+    p3 = p3 -1;                     // point back to beginning
+    delete [] p3;                   // free the memory
+    return 0;
+}
+```
+> Output: \
+p3[1] is 0.5 .\
+Now p3[0] is 0.5 and p3[1] is 0.8.
+
+19. addpntrs.cpp
+
+```c++
+// addpntrs.cpp -- pointer addition
+#include <iostream>
+int main()
+{
+    using namespace std;
+    double wages[3] = {10000.0, 20000.0, 30000.0};
+    short stacks[3] = {3, 2, 1};
+    
+// Here are two ways to get the address of an array
+    double * pw = wages;        // name of an array = address
+    short * ps = &stacks[0];    // or use address operator
+// with array element
+    cout << "pw = " << pw << ", *pw = " << *pw << endl;
+    pw = pw + 1;
+    cout << "add 1 to the pw pointer:\n";
+    cout << "pw = " << pw << ", *pw = " << *pw << "\n\n";
+    cout << "ps = " << ps << ", *ps = " << *ps << endl;
+    ps = ps + 1;
+    cout << "add 1 to the ps pointer:\n";
+    cout << "ps = " << ps << ", *ps = " << *ps << "\n\n";
+    
+    cout << "acess two elements with array notation\n";
+    cout << "stacks[0] = " << stacks[0]
+         << ", stacks[1] = " << stacks[1] << endl;
+    cout << "*stacks = " << *stacks
+         << ", *(stacks + 1) = " << *(stacks + 1) << endl;
+    
+    cout << sizeof(wages) << " = size of wages array\n";
+    cout << sizeof(pw) << " = size of pw pointer\n";
+    return 0;
+}
+```
+> Output: \
+pw = 0x7ffdbe62c2f0, *pw = 10000\
+add 1 to the pw pointer:\
+pw = 0x7ffdbe62c2f8, *pw = 20000\
+\
+ps = 0x7ffdbe62c2e0, *ps = 3\
+add 1 to the ps pointer:\
+ps = 0x7ffdbe62c2e2, *ps = 2\
+\
+acess two elements with array notation\
+stacks[0] = 3, stacks[1] = 2\
+*stacks = 3, *(stacks + 1) = 2\
+24 = size of wages array\
+8 = size of pw pointer
+
+20. ptrstr.cpp
+
+```c++
+// ptrstr.cpp   -- using pointers to strings
+#include <iostream>
+#include <cstring>              // declare strlen(), strcpy()
+int main()
+{
+    using namespace std;
+    char animal[20] = "bear";   // animal holds bear
+    const char * bird = "wren"; // bird holds address of string
+    char * ps;                  // uninitialized
+    
+    cout << animal << " and ";  // display bear
+    cout << bird << "\n";       // display wren
+    // cout << ps << "\n";      // may display garbage, may cause a crash
+    
+    cout << "Enter a kind of animal: ";
+    cin >> animal;              // ok if input < 20 chars
+    // cin >> ps;  Too horrible a blunder to try; ps doesn't
+    //              point to allocated space
+    
+    ps = animal;                // set ps to point to string
+    cout << ps << "!\n";        // ok, same as using animal
+    cout << "Before using strcpy():\n";
+    cout << animal << " at " << (int *) animal << endl;
+    cout << ps << " at " << (int *) ps << endl;
+    
+    ps = new char[strlen(animal) + 1];  // get new storage
+    strcpy(ps, animal);         // copy string to new storage
+    cout << "After using strcpy():\n";
+    cout << animal << " at " << (int *) animal << endl;
+    cout << ps << " at " << (int *) ps << endl;
+    delete [] ps;
+    return 0;
+}
+```
+> Output: \
+bear and wren\
+Enter a kind of animal: dog\
+dog!\
+Before using strcpy():\
+dog at 0x7ffdf66ce730\
+dog at 0x7ffdf66ce730\
+After using strcpy():\
+dog at 0x7ffdf66ce730\
+dog at 0x9dd010
+
+21. newstrct.cpp
+
+```c++
+// newstrct.cpp -- using new with a structure
+#include <iostream>
+struct inflatable       // structure definition
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable * ps = new inflatable;   // allot memory for structure
+    cout << "Enter name of inflatable item: ";
+    cin.get(ps->name, 20);              // method 1 for member access
+    cout << "Enter volume in cubic feet: ";
+    cin >> (*ps).volume;                // method 2 for member access
+    cout << "Enter price: $";
+    cin >> ps->price;
+    cout << "Name: " << (*ps).name << endl;             // method 2
+    cout << "Volume: " << ps->volume << " cubic feet\n";  // method 1
+    cout << "Price: $" << ps->price << endl;            // method 1
+    delete ps;                          // free memory used by structure
+    return 0;
+}
+```
+> Output: \
+Enter name of inflatable item: test struct\
+Enter volume in cubic feet: 13.2\
+Enter price: $66.77\
+Name: test struct\
+Volume: 13.2 cubic feet\
+Price: $66.77
+
+22. delete.cpp
+
+```c++
+// delete.cpp   -- using the delete operator
+#include <iostream>
+#include <cstring>      // or string.h
+using namespace std;
+char * getname(void);   // function prototype
+int main()
+{
+    char * name;        // create pointer but no storage
+    
+    name = getname();   // assign address of string to name
+    cout << name << " at " << (int *) name << "\n";
+    delete [] name;     // memory freed
+    
+    name = getname();   // reuse freed memory
+    cout << name << " at " << (int *) name << "\n";
+    delete [] name;     // memory freed again
+    return 0;
+}
+
+char * getname()        // return pointer to new string
+{
+    char temp[80];      // temporary storage
+    cout << "Enter last name: ";
+    cin >> temp;
+    char * pn = new char[strlen(temp) +1];
+    strcpy(pn, temp);   // copy string into smaller space
+    
+    return pn;          // temp lost when function ends
+}
+```
+> Output: \
+Enter last name: Jhyqwertyu\
+Jhyqwertyu at 0x96f010\
+Enter last name: test\
+test at 0x96f010
+
+23. mixtypes.cpp
+
+```c++
+// mixtypes.cpp -- some type combinations
+#include <iostream>
+
+struct antarctica_years_end
+{
+    int year;
+/* some really interesting data, etc. */
+};
+
+int main()
+{
+    antarctica_years_end s01, s02, s03;
+    s01.year = 1998;
+    antarctica_years_end * pa = &s02;
+    pa->year = 1999;
+    antarctica_years_end trio[3];   // array of 3 structures
+    trio[0].year = 2003;
+    std::cout << trio->year << std::endl;
+    const antarctica_years_end * arp[3] = {&s01, &s02, &s03};
+    std::cout << arp[1]->year << std::endl;
+    const antarctica_years_end ** ppa = arp;
+    auto ppb = arp;     // C++11 automatic type deduction
+// or else use const antarctica_years_end ** ppb = arp;
+    std::cout << (*ppa)->year << std::endl;
+    std::cout << (*(ppb+1))->year << std::endl;
+    return 0;
+}
+```
+> Output:\
+2003\
+1999\
+1998\
+1999

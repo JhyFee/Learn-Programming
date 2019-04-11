@@ -85,7 +85,7 @@ int main()
     return 0;
 }
 ```
-4. Write a program that asks the user to enter the number of seconds as an integer value (use type long,or,if available, long  long) and that then displays the equiva- lent time in days,hours,minutes,and seconds.Use symbolic constants to represent the number of hours in the day,the number of minutes in an hour,and the number of seconds in a minute.The output should look like this:
+4. Write a program that asks the user to enter the number of seconds as an integer value (use type long,or,if available, long  long) and that then displays the equiva-lent time in days,hours,minutes,and seconds.Use symbolic constants to represent the number of hours in the day,the number of minutes in an hour,and the number of seconds in a minute.The output should look like this:
 > Enter the number of seconds: 31600000\
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
 
@@ -114,13 +114,77 @@ int main()
     return 0;
 }
 ```
-5. Write a program that requests the user to enter the current world population and the current population of the U.S.(or of some other nation of your choice).Store the information in variables of type long  long.Have the program display the per- cent that the U.S.(or other nation’s) population is of the world’s population.The output should look something like this:
+5. Write a program that requests the user to enter the current world population and the current population of the U.S.(or of some other nation of your choice).Store the information in variables of type long  long.Have the program display the percent that the U.S.(or other nation’s) population is of the world’s population.The output should look something like this:
 > Enter the world's population: 6898758899 \
 Enter the population of the US: 310783781\
 The population of the US is 4.50492% of the world population.
 
-
+```c++
+// pop_percent.cpp  -- display the population percent
+#include <iostream>
+int main()
+{
+    using namespace std;
+    long long wd_pop, us_pop, cn_pop;
+    double us_pop_per, cn_pop_per;
+    
+    cout << "Enter the world's population: ";
+    cin >> wd_pop;
+    cout << "Enter the population of the US: ";
+    cin >> us_pop;
+    cout << "Enter the population of the China: ";
+    cin >> cn_pop;
+    
+    us_pop_per = double (us_pop) / wd_pop * 100;
+    cn_pop_per = double (cn_pop) / wd_pop * 100;
+    
+    cout << "The population of the US is " << us_pop_per
+         << "% of the world population." << endl;
+    cout << "The population of the China is " << cn_pop_per
+         << "% of the world population." << endl;
+    return 0;
+}
+```
 6. Write a program that asks how many miles you have driven and how many gallons of gasoline you have used and then reports the miles per gallon your car has gotten. Or,if you prefer,the program can request distance in kilometers and petrol in liters and then report the result European style,in liters per 100 kilometers.
 
+```c++
+// convert_fuel.cpp  -- report the result in liters per 100 kilometers.
+#include <iostream>
+int main()
+{
+    using namespace std;
+    float kms, lits;
+    
+    cout << "Please enter the distance you have driven in kilometers: ";
+    cin >> kms;
+    cout << "Please enter the petrol you have used in liters: ";
+    cin >> lits;
+    
+    cout << "Your automobile gasoline consumption figure is: "
+         << lits / kms * 100 << " l/100 km." << endl;
+    return 0;
+}
+```
+7. Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S.style of miles per gallon.Note that in addition to using different units of measurement,the U.S.approach (distance / fuel) is the inverse of the European approach (fuel / distance).Note that 100 kilometers is 62.14 miles,and 1 gallon is 3.875 liters.Thus,19 mpg is about 12.4 l/100 km,and 27 mpg is about 8.7 l/100 km. 
 
-7. Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S.style of miles per gallon.Note that in addition to using different units of measurement,the U.S.approach (distance / fuel) is the inverse of the European approach (fuel / dis- tance).Note that 100 kilometers is 62.14 miles,and 1 gallon is 3.875 liters.Thus,19 mpg is about 12.4 l/100 km,and 27 mpg is about 8.7 l/100 km. 
+```c++
+// convert_style.cpp    -- converts to the U.S.style.
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int mpg;
+    float lits;
+    const float Km_to_mile = 62.14;
+    const float Ga_to_liter = 3.875;
+    
+    cout << "Please enter your  automobile gasoline consumption figure in the European style \n(liters per 100 kilometers): ";
+    cin >> lits;
+    
+    mpg =int (Km_to_mile / (lits / Ga_to_liter));
+    
+    cout << lits << " l/100 km in U.S.approach is "
+         << mpg << " mpg." << endl;
+    return 0;
+}
+```
